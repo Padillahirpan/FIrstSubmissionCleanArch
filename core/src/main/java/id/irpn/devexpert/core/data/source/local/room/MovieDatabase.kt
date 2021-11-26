@@ -14,21 +14,4 @@ import id.irpn.devexpert.core.data.source.local.entitiy.MovieEntity
 @Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
 abstract class MovieDatabase: RoomDatabase() {
     abstract fun movieDao(): MovieDao
-
-    companion object {
-        @Volatile
-        private var INSTANCE: MovieDatabase? = null
-
-        fun getInstance(context: Context): MovieDatabase =
-            INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    MovieDatabase::class.java,
-                    "MovieIrpn.db"
-                ).fallbackToDestructiveMigration().build()
-                INSTANCE = instance
-                instance
-            }
-    }
-
 }

@@ -2,6 +2,7 @@ package id.irpn.devexpert.favorite.ui.favorite
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.irpn.devexpert.core.domain.model.DataMovie
@@ -26,7 +27,12 @@ class FavoriteActivity : AppCompatActivity(), FavMovieAdapter.FavMovieAdapterCal
         setupAdapter()
 
         viewModel.movies.observe(this) { moviesLocal ->
-            populateData(moviesLocal)
+            if (moviesLocal.isNotEmpty()) {
+                binding.layoutEmptyState.root.visibility = View.GONE
+                populateData(moviesLocal)
+            } else {
+                binding.layoutEmptyState.root.visibility = View.VISIBLE
+            }
         }
     }
 
