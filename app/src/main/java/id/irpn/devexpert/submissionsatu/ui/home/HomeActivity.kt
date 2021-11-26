@@ -17,11 +17,11 @@ import id.irpn.devexpert.submissionsatu.ui.detail.DetailMovieActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity: AppCompatActivity(), MovieAdapter.MovieAdapterCallback {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private val viewModel: HomeViewModel by viewModel()
 
-    lateinit var movieAdapter: MovieAdapter
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

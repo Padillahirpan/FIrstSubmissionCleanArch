@@ -12,7 +12,7 @@ import id.irpn.devexpert.core.domain.usecase.MovieUseCase
  */
 
 class DetailFavViewModel(
-    val movieUseCase: MovieUseCase
+    private val movieUseCase: MovieUseCase
 ): ViewModel() {
 
     var statusFavorite: Boolean = false

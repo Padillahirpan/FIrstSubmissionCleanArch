@@ -10,8 +10,6 @@ import com.bumptech.glide.Glide
  */
 
 object Helper {
-    const val TYPE_MOVIE = "TYPE_MOVIE"
-    const val TYPE_TVSHOW = "TYPE_TVSHOW"
     const val API_IMAGE_ENDPOINT = "https://image.tmdb.org/t/p/"
     const val ENDPOINT_POSTER_SIZE_W500 = "w500"
     const val ENDPOINT_POSTER_SIZE_W780 = "w780"

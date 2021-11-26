@@ -1,7 +1,6 @@
 package id.irpn.devexpert.submissionsatu.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -15,7 +14,7 @@ import id.irpn.devexpert.submissionsatu.databinding.ActivityDetailMovieBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDetailMovieBinding
+    private lateinit var binding: ActivityDetailMovieBinding
 
     private val viewModel: DetailMovieViewModel by viewModel()
 
@@ -29,7 +28,6 @@ class DetailMovieActivity : AppCompatActivity() {
             val id = extras.getString(EXTRA_DATA, "-1")
 
             viewModel.getDetailLocal(id).observe(this) { dataMovie ->
-                Log.d("xyz","detail activity: $dataMovie")
                 if (dataMovie?.id == null) {
                     setStatusFavorite(false)
                     getDetailRemote(id)

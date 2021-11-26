@@ -35,8 +35,9 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val loggingInterceptor = HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(loggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
@@ -56,9 +57,4 @@ val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     single<IMovieRepository> { MovieRepository(get(), get()) }
-}
-
-val viewModelModuleFav = module {
-//    viewModel { Favo(get()) }
-//    viewModel { DetailMovieViewModel(get()) }
 }

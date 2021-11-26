@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
  */
 
 class LocalDataSource(
-    val movieDao: MovieDao
+    private val movieDao: MovieDao
 ) {
 
     fun getFavorites(): Flow<List<MovieEntity>> {
@@ -21,14 +21,4 @@ class LocalDataSource(
 
     suspend fun insertMovie(movies: List<MovieEntity>) = movieDao.insertMovies(movies)
     suspend fun deleteMovie(movie: MovieEntity) = movieDao.deleteMovies(movie)
-
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(movieDao: MovieDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(movieDao)
-            }
-
-    }
 }

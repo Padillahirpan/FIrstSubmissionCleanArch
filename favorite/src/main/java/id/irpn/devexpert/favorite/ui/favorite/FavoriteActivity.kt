@@ -13,7 +13,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteActivity : AppCompatActivity(), FavMovieAdapter.FavMovieAdapterCallback {
 
-    lateinit var binding: ActivityFavoriteBinding
+    private lateinit var binding: ActivityFavoriteBinding
     private val viewModel: FavoriteViewModel by viewModel()
 
     private lateinit var movieAdapter: FavMovieAdapter

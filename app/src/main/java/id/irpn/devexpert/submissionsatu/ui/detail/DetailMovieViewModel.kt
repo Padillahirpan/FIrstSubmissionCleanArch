@@ -13,13 +13,12 @@ import id.irpn.devexpert.core.domain.usecase.MovieUseCase
  */
 
 class DetailMovieViewModel(
-    val movieUseCase: MovieUseCase
+    private val movieUseCase: MovieUseCase
 ): ViewModel() {
     var statusFavorite: Boolean = false
 
     fun getDetailMovie(id: String): LiveData<Resource<DataMovie>> {
-        val data = movieUseCase.getDetailMovies(id).asLiveData()
-        return data
+        return movieUseCase.getDetailMovies(id).asLiveData()
     }
 
     fun getDetailLocal(id: String): LiveData<DataMovie?> {

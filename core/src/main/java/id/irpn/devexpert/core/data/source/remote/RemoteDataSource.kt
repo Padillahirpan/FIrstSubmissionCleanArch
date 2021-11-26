@@ -48,14 +48,4 @@ class RemoteDataSource(
         }.flowOn(Dispatchers.IO)
 
     }
-
-    companion object {
-        @Volatile
-        private var instance: RemoteDataSource? = null
-
-        fun getInstance(service: ApiService): RemoteDataSource =
-            instance ?: synchronized(this) {
-                instance ?: RemoteDataSource(service)
-            }
-    }
 }

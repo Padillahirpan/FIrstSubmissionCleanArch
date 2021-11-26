@@ -1,7 +1,6 @@
 package id.irpn.devexpert.favorite.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,8 +13,8 @@ import id.irpn.devexpert.submissionsatu.ui.detail.DetailMovieActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailFavMovieActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDetailMovieBinding
-    val viewModel: DetailFavViewModel by viewModel()
+    private lateinit var binding: ActivityDetailMovieBinding
+    private val viewModel: DetailFavViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,6 @@ class DetailFavMovieActivity : AppCompatActivity() {
             val id = extras.getString(DetailMovieActivity.EXTRA_DATA, "-1")
 
             viewModel.getDetailLocal(id).observe(this) { dataMovie ->
-                Log.d("xyz","detail activity: $dataMovie")
                 if (dataMovie?.id == null) {
                     setStatusFavorite(false)
                     populateData(null)
